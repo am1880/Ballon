@@ -14,6 +14,14 @@ android {
         versionCode = 1
         versionName = "1.0"
     }
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            // Signed with the debug key so the APK installs directly. Replace with a real
+            // keystore before publishing to a store.
+            signingConfig = signingConfigs.getByName("debug")
+        }
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
