@@ -145,7 +145,10 @@ class GameView(context: Context) : View(context), Choreographer.FrameCallback {
     private fun handleTap(g: Game, x: Float, y: Float): Boolean {
         when (g.phase) {
             Phase.READY -> if (renderer.startButton.contains(x, y)) { startRun(g); return true }
-            Phase.PLAYING -> if (renderer.pauseButton.contains(x, y)) { g.pause(); return true }
+            Phase.PLAYING -> renderer.pauseButton.let { b ->
+                // Hit area is larger than the icon so it is easy to tap.
+                if (x >= b.left - 4f && x <= b.right + 4f && y >= b.top - 4f && y <= b.bottom + 4f) { g.pause(); return true }
+            }
             Phase.PAUSED -> if (renderer.resumeButton.contains(x, y)) { g.resume(); return true }
             Phase.GAME_OVER -> when {
                 renderer.replayButton.contains(x, y) -> { startRun(g); return true }

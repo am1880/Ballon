@@ -342,11 +342,11 @@ class Renderer {
     private fun drawHud(canvas: Canvas, game: Game) {
         val baseY = safeTop + 7f
         val scoreStr = game.score.toString()
-        drawText(canvas, scoreStr, safeLeft, baseY, 8f, Paint.Align.LEFT, 0xFFFFFFFF.toInt(), 0xCC1B2A5C.toInt(), 0.9f)
+        drawText(canvas, scoreStr, safeLeft, baseY, 8f, Paint.Align.LEFT, 0xFFFFFFFF.toInt(), 0xF51B2A5C.toInt(), 0.9f)
         text.textSize = 8f
         val w = text.measureText(scoreStr)
         drawText(canvas, "BEST ${maxOf(game.bestScore, game.score)}", safeLeft + w + 3f, baseY, 3.8f,
-            Paint.Align.LEFT, 0xFFFFE8A0.toInt(), 0xCC1B2A5C.toInt(), 0.55f)
+            Paint.Align.LEFT, 0xFFFFE8A0.toInt(), 0xF51B2A5C.toInt(), 0.55f)
         if (game.phase == Phase.PLAYING || game.phase == Phase.PAUSED) drawPauseIcon(canvas)
     }
 
@@ -369,7 +369,7 @@ class Renderer {
     private fun drawReady(canvas: Canvas, game: Game) {
         val h = game.worldHeight
         drawText(canvas, "BALLON", 50f, h * 0.22f, 17f, Paint.Align.CENTER, 0xFFFFF4D6.toInt(), 0xFFC23B22.toInt(), 1.6f)
-        drawText(canvas, "Drag to steer", 50f, h * 0.22f + 10f, 5f, Paint.Align.CENTER, 0xFFFFFFFF.toInt(), 0xCC1B2A5C.toInt(), 0.7f)
+        drawText(canvas, "Drag to steer", 50f, h * 0.22f + 10f, 5f, Paint.Align.CENTER, 0xFFFFFFFF.toInt(), 0xF51B2A5C.toInt(), 0.7f)
         drawButton(canvas, startButton, "START", 0xFFFF8A3D.toInt(), 0xFFC4521C.toInt())
     }
 
@@ -392,7 +392,7 @@ class Renderer {
         drawDim(canvas, h)
         val top = panelTop(h, game.balloonY)
         rect.set(10f, top, 90f, top + 94f)
-        fill.color = 0xCC1B2A5C.toInt()
+        fill.color = 0xF51B2A5C.toInt()
         canvas.drawRoundRect(rect, 5f, 5f, fill)
         stroke.strokeWidth = 0.5f
         stroke.color = 0x88FFFFFF.toInt()

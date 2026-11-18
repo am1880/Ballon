@@ -33,7 +33,13 @@ class MainActivity : Activity() {
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
-        if (hasFocus) enterImmersive()
+        if (hasFocus) {
+            enterImmersive()
+            gameView.onHostResume()
+        } else {
+            // Notification shade, incoming call, system dialog: no onPause, so pause here.
+            gameView.onHostPause()
+        }
     }
 
     override fun onPause() {
